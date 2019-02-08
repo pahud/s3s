@@ -69,6 +69,7 @@ e.g.
 
 upload to `Tokyo region(ap-northeast-1)`
 ```
+$ s3sjp ../lambda-layer-awscli/func-bundle.zip                                                                                                            
 Uploading file to S3...
 Successfully uploaded ../lambda-layer-awscli/func-bundle.zip to https://pahud-tmp-ap-northeast-1.s3.ap-northeast-1.amazonaws.com/func-bundle.zip
 Original URL: https://pahud-tmp-ap-northeast-1.s3.ap-northeast-1.amazonaws.com/func-bundle.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJJFINOFXR3LTLIFQ%2F20190208%2Fap-northeast-1%2Fs3%2Faws4_request&X-Amz-Date=20190208T170707Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7c3e9d08b97f4958fdf474b1cbdefe3adceb93ade8557002b6ef6724e2126130
