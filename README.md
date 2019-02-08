@@ -56,7 +56,7 @@ alias s3scn="AWS_PROFILE=cn AWS_DEFAULT_REGION=cn-northwest-1 s3s pahud-tmp-cn-n
 And simply 
 
 ```
-$ snsjp FILE
+$ s3sjp FILE
 or
 $ s3scn FILE
 ```
