@@ -14,10 +14,10 @@ build-linux:
 	@go get -u github.com/golang/dep/cmd/dep
 	@[ ! -f ./Gopkg.toml ] && dep init || true
 	@dep ensure
-	@GOOS=linux GOARCH=amd64 go build -o s3s.linux main.go
+	@GOOS=linux GOARCH=amd64 go build -o s3s main.go
 
 build-darwin:
 	@go get -u github.com/golang/dep/cmd/dep
 	@[ ! -f ./Gopkg.toml ] && dep init || true
 	@dep ensure
-	@GOOS=darwin GOARCH=amd64 go build -o s3s.darwin main.go
+	@GOOS=darwin GOARCH=amd64 go build -o s3s main.go
