@@ -26,12 +26,3 @@ build-darwin:
 	@[ ! -f ./Gopkg.toml ] && dep init || true
 	@dep ensure
 	@GOOS=darwin GOARCH=amd64 go build -o s3s.darwin main.go
-
-devbuild:
-	@echo "Building..."
-	docker run -ti -v $(PWD):/go -e GOOS=darwin -e GOARCH=$(GOARCH) -w /go/workdir -e GOPATH:/go/workdir/go  golang:1.11 /bin/bash -c "go mod init s3s; go build" 
-	# @GOOS=$(GOOSDEV) GOARCH=$(GOARCH) go build -ldflags='-w -s' -o $(HANDLER)
-
-run:
-	docker run -ti -v $(PWD):/go -e GOOS=darwin -e GOARCH=$(GOARCH) -w /go/workdir golang:1.11 /bin/bash -c "go run main.go" 
-	# @GOOS=$(GOOSDEV) GOARCH=$(GOARCH) go build -ldflags='-w -s' -o $(HANDLER)
