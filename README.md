@@ -5,7 +5,7 @@
 - [x] simple CLI interface
 - [x] support both AWS global regions as well as regions in China(`Beijing` and `Ningxia`).
 - [x] `bit.ly` as the default URL shorterning provider
-- [x] `t.cn` as the default provider for AWS China regions upload(`cn-north-1` and `cn-northwest-2`) [#1](https://github.com/pahud/s3s/issues/1)
+- [x] `t.cn` as the default provider for AWS China regions upload(`cn-north-1` and `cn-northwest-1`) [#1](https://github.com/pahud/s3s/issues/1)
 - [x] single executable binary. No dependency required.
  
 
