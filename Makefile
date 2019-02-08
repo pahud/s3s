@@ -1,10 +1,5 @@
-HANDLER ?= main
-PACKAGE ?= $(HANDLER)
-GOPATH  ?= $(HOME)/go
-# GOOS    ?= linux
 GOOSDEV	?= $(shell uname -s)
 GOARCH  ?= amd64
-S3TMPBUCKET	?= pahud-tmp
 CONTAINER ?= $(shell docker run -d myapp false)
 GOOS ?= $(shell uname -s |  tr '[:upper:]' '[:lower:]')
 
