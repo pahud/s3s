@@ -46,3 +46,30 @@ LongURL: https://pahud-tmp-cn-northwest-1.s3.cn-northwest-1.amazonaws.com.cn/fun
 ShortURL: http://bit.ly/2RP7jtp          
 ```
 
+You may also set an alias in your `~/.bash_profile` like this
+
+```
+alias s3scn="AWS_PROFILE=cn AWS_DEFAULT_REGION=cn-northwest-1 s3s pahud-tmp-cn-northwest-1 $@"                                                                                             
+```
+
+And simply 
+
+```
+$ s3scn FILE
+```
+
+to upload your local file to your private S3 bucket and get the `bitly` URL immediately.
+
+e.g.
+
+```
+$ s3scn ../lambda-layer-awscli/func-bundle.zip                                                                                                            
+Uploading file to S3...                                                                                                                                                                    
+Successfully uploaded ../lambda-layer-awscli/func-bundle.zip to https://pahud-tmp-cn-northwest-1.s3.cn-northwest-1.amazonaws.com.cn/func-bundle.zip                                        
+2019/02/08 14:40:50 The URL is https://pahud-tmp-cn-northwest-1.s3.cn-northwest-1.amazonaws.com.cn/func-bundle.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAOEVQOGI2VHQNTNHA%2
+F20190208%2Fcn-northwest-1%2Fs3%2Faws4_request&X-Amz-Date=20190208T144050Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7aba040654c3a1b27373cc982c4bc17e4e7a2573142ec9bbc6
+09f246c99afd9c                                                                                                                                                                             
+LongURL: https://pahud-tmp-cn-northwest-1.s3.cn-northwest-1.amazonaws.com.cn/func-bundle.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAOEVQOGI2VHQNTNHA/20190208/cn-northwest-1
+/s3/aws4_request&X-Amz-Date=20190208T144050Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=7aba040654c3a1b27373cc982c4bc17e4e7a2573142ec9bbc609f246c99afd9c                
+ShortURL: http://bit.ly/2WQzD2b                                                                                     
+```
