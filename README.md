@@ -13,8 +13,14 @@ usage: s3s <bucket> <filename>
 add `export BITLY_TOKEN='<YOUR_BITLY_TOKEN>'` in your `~/.bash_profile`                                                                                                                         
 
 
+## Usage
 
-## Usage #1: through AWS Global regions
+```
+AWS_PROFILE=<YOUR_PROFILE_NAME> AWS_DEFAULT_REGION=<TARGET_AWS_REGION> s3s <YOUR_S3_BCKET> FILE  
+```
+
+
+## Example #1: through AWS Global regions
 ```
 $ AWS_DEFAULT_REGION=ap-northeast-1 s3s pahud-tmp-nrt  ../lambda-layer-awscli/func-bundle.zip                                                             
 Uploading file to S3...                                                                                                                                                                    
@@ -26,11 +32,7 @@ st&X-Amz-Date=20190208T142853Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-A
 ShortURL: http://bit.ly/2WRSEkE         
 ```
 
-## Usage #2: through AWS China Beijing or Ningxia region
-```
-AWS_PROFILE=cn AWS_DEFAULT_REGION=cn-northwest-1 s3s pahud-tmp-cn-northwest-1 /path/to/your/file.ext  
-```
-e.g.
+## Example #2: through AWS China Beijing or Ningxia region
 
 ```
 $ AWS_PROFILE=cn AWS_DEFAULT_REGION=cn-northwest-1 s3s pahud-tmp-cn-northwest-1  ../lambda-layer-awscli/func-bundle.zip                                   
