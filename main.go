@@ -20,15 +20,16 @@ import (
 )
 
 var (
-	aws_profile = "default"
-	aws_region  = "ap-northeast-1"
+	awsProfile = "default"
+	awsRegion  = "ap-northeast-1"
 )
 
-type Resp map[string]interface{}
+type resp map[string]interface{}
 
+// BitlyURLShorten is the shortener for bit.ly
 func BitlyURLShorten(urlStr string) string {
-	api_key := os.Getenv("BITLY_TOKEN")
-	b := bitly.New(api_key)
+	apiKey := os.Getenv("BITLY_TOKEN")
+	b := bitly.New(apiKey)
 	shortURL, err := b.Links.Shorten(urlStr)
 	if err != nil {
 		log.Errorf("Failed to sign request", err)
@@ -38,6 +39,7 @@ func BitlyURLShorten(urlStr string) string {
 	return shortURL.URL
 }
 
+// SinaURLShorten is URU shortener for t.cn
 func SinaURLShorten(urlStr string) string {
 	// http://api.weibo.com/2/short_url/shorten.json?source=2849184197&url_long=http://www.cnblogs.com
 	apiurl := "http://api.weibo.com/2/short_url/shorten.json?source=2849184197"
@@ -47,13 +49,13 @@ func SinaURLShorten(urlStr string) string {
 		// handle error
 	}
 	defer resp.Body.Close()
-	var body Resp
+	var body resp
 	json.NewDecoder(resp.Body).Decode(&body)
 	// 	log.Info(body["urls"].([]interface{}))
 	urls := body["urls"].([]interface{})
-	url_short := urls[0].(map[string]interface{})["url_short"]
-	//log.Info(url_short)
-	return url_short.(string)
+	urlShort := urls[0].(map[string]interface{})["urlShort"]
+	//log.Info(urlShort)
+	return urlShort.(string)
 }
 
 func main() {
@@ -65,11 +67,11 @@ func main() {
 	bucket := os.Args[1]
 	filename := os.Args[2]
 
-	if profile := os.Getenv("AWS_PROFILE"); profile != "" {
-		aws_profile = profile
+	if profile := os.Getenv("awsProfile"); profile != "" {
+		awsProfile = profile
 	}
 	if region := os.Getenv("AWS_DEFAULT_REGION"); region != "" {
-		aws_region = region
+		awsRegion = region
 	}
 
 	file, err := os.Open(filename)
@@ -84,8 +86,8 @@ func main() {
 	// 	Region: aws.String("ap-northeast-1"),
 	// }
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
-		Config:  aws.Config{Region: aws.String(aws_region)},
-		Profile: aws_profile,
+		Config:  aws.Config{Region: aws.String(awsRegion)},
+		Profile: awsProfile,
 	}))
 	// sess := session.New(&conf)
 	svc := s3manager.NewUploader(sess)
@@ -119,7 +121,7 @@ func main() {
 	// shortURL, err := b.Links.Shorten(urlStr)
 
 	fmt.Println("Original URL:", urlStr)
-	if !strings.HasPrefix(aws_region, "cn-") {
+	if !strings.HasPrefix(awsRegion, "cn-") {
 		shortURL := BitlyURLShorten(urlStr)
 		if err != nil {
 			log.Println("Failed to sign request", err)
