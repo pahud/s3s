@@ -24,7 +24,7 @@ var (
 	awsRegion  = "ap-northeast-1"
 )
 
-type resp map[string]interface{}
+type respType map[string]interface{}
 
 // BitlyURLShorten is the shortener for bit.ly
 func BitlyURLShorten(urlStr string) string {
@@ -49,7 +49,7 @@ func SinaURLShorten(urlStr string) string {
 		// handle error
 	}
 	defer resp.Body.Close()
-	var body resp
+	var body respType
 	json.NewDecoder(resp.Body).Decode(&body)
 	// 	log.Info(body["urls"].([]interface{}))
 	urls := body["urls"].([]interface{})
