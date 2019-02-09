@@ -1,3 +1,6 @@
+![](https://goreportcard.com/badge/github.com/pahud/s3s)
+![](https://travis-ci.org/pahud/s3s.svg?branch=master)
+
 # s3s
 `s3s` is a tiny CLI that helps you upload local file to your private s3 bucket, generating a presign URL for this file followed by URL shortening with `bit.ly`.
 
