@@ -53,8 +53,8 @@ func SinaURLShorten(urlStr string) string {
 	json.NewDecoder(resp.Body).Decode(&body)
 	// 	log.Info(body["urls"].([]interface{}))
 	urls := body["urls"].([]interface{})
-	urlShort := urls[0].(map[string]interface{})["urlShort"]
-	//log.Info(urlShort)
+	urlShort := urls[0].(map[string]interface{})["url_short"]
+	//log.Info(url_short)
 	return urlShort.(string)
 }
 
